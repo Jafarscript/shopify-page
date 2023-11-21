@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+a{
+    text-decoration: none;
+}
+
 body {
     background-color: #f1f1f1;
     font-family: 'Inter';
@@ -29,7 +33,7 @@ label {
     border: 1px solid #616161;
     gap: 8px;
     align-items: center;
-    width: 480px;
+    width: 480px;   
 }
 
 
@@ -65,9 +69,9 @@ nav {
     background-color: #616161;
 }
 
-.notifyButton:hover~.drop {
+/* .notifyButton:hover~.drop {
     display: block;
-}
+} */
 
 
 .drop {
@@ -79,6 +83,11 @@ nav {
     right: 15px;
     border-radius: 14px;
     border: 1px solid #dbdbdb;
+    z-index: 10;
+}
+
+.dropOpen{
+    display: block;
 }
 
 .alerthead {
@@ -163,6 +172,11 @@ nav {
     width: 320px;
     border-radius: 14px;
     border: 1px solid #dbdbdb;
+    z-index: 10;
+}
+
+.tabOpen{
+    display: block;
 }
 
 .storeTab section {
@@ -177,9 +191,7 @@ nav {
     border: none;
 }
 
-.storename:hover~.storeTab {
-    display: block;
-}
+
 
 .top {
     padding: 0px 6px;
@@ -275,10 +287,213 @@ nav {
 
 /* Drop Collections End */
 
+
+
+/* Main component */
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
+    flex-direction: column;
+}
+
+.container {
+    width: 800px;
+}
+
+.planAlert {
+    display: flex;
+    padding: 12px 16px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    flex-wrap: wrap;
+}
+
+.hideAlert{
+    display: none;
+}
+
+.planAlert p {
+    font-size: 13px;
+    color: #E3E3E3;
+    font-weight: 500;
+}
+
+.planAlert span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.planAlert a {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    color: #323232;
+}
+
+.planAlert svg {
+    cursor: pointer;
+}
+
+.setup {
+    margin-top: 16px;
+    padding: 16px;
+    background: #fff;
+    border-radius: 18px;
+}
+
+.setupHead {
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftHead h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #303030;
+}
+
+.leftHead h5 {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.counter {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.countPart {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.progressBar {
+    width: 72px;
+    height: 4px;
+    background-color: #E3E3E3;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.progress {
+    display: block;
+    width: 25%;
+    background: #1A1A1A;
+    height: 100%;
+}
+
+
+
+.setupStep {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 16px;
+}
+
+.setupStep li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 8px 12px 8px;
+    border-radius: 10px;
+    background: #F3F3F3;
+    gap: 96px;
+}
+
+.stepRight{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+.setupStep li h3 {
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #303030;
+}
+
+.setupStep li p {
+    font-size: 13px;
+    font-weight: 500;
+    color: #616161;
+}
+
+.setupStep li a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #005BD3;
+}
+
+.stepButton button{
+    padding: 6px 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.stepButton .greyBtn {
+    color: #F6F3F6;
+    border-radius: 6px;
+    background: #404040;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.20);
+    border-right: 1.5px solid rgba(255, 255, 255, 0.20);
+    border-left: 1.5px solid rgba(255, 255, 255, 0.20);
+    box-shadow: 0px 0px 0px 1.5px #333, 0px 1px 0px 1.5px #333, 0px 2px 0px 0px #000;
+}
+
+@media(max-width:820px) {
+    .container {
+        width: 100%;
+    }
+
+    .setup,
+    .planAlert {
+        border-radius: 0px;
+    }
+
+    label{
+      width: 350px;
+    }
+
+}
+
+@media(max-width:539px) {
+    .planAlert {
+        gap: 16px;
+        position: relative;
+    }
+
+    .planAlert svg {
+        position: absolute;
+        top: 30px;
+        right: 10px;
+    }
+
+    .setupStep img{
+        display: none;
+    }
+}
+
 @media(max-width: 750px) {
-    header{
+    header {
         gap: 8px;
     }
+
     .logoMobile {
         display: block;
     }
@@ -303,134 +518,9 @@ nav {
     }
 
 
-    .notify .notifyButton{
+    .notify .notifyButton {
         padding: 6px;
         background: none;
         /* border-radius: 0px; */
-    }
-}
-
-/* Main component */
-main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 32px;
-    flex-direction: column;
-}
-
-.container{
-    width: 800px;
-}
-
-.planAlert {
-    display: flex;
-    padding: 12px 16px;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1a1a1a;
-    border-radius: 8px;
-    flex-wrap: wrap;
-}
-
-.planAlert p{
-    font-size: 13px;
-    color: #E3E3E3;
-    font-weight: 500;
-}
-
-.planAlert span{
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.planAlert a{
-    font-size: 12px;
-    font-weight: 600;
-    padding: 6px 12px;
-    background: #fff;
-    border-radius: 6px;
-    border: 1px solid rgba(0, 0, 0, 0.10);
-    cursor: pointer;
-    outline: none;
-}
-
-.planAlert svg{
-    cursor: pointer;
-}
-
-.setup{
-    margin-top: 16px;
-    padding: 16px;
-    background: #fff;
-    border-radius: 18px;
-}
-
-.setupHead{
-    display: flex;
-    justify-content: space-between;
-}
-
-.leftHead h3{
-    font-size: 14px;
-    font-weight: 600;
-    color: #303030;
-}
-
-.leftHead h5{
-    font-size: 13px;
-    font-weight: 400;
-}
-
-.counter{
-    font-size: 12px;
-    font-weight: 400;
-}
-
-.countPart{
-    margin-top: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.progressBar{
-    width: 72px;
-    height: 4px;
-    background-color: #E3E3E3;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.progress{
-    display: block;
-    width: 25%;
-    background: #1A1A1A;
-    height: 100%;
-}
-
-@media(max-width:820px){
-    .container{
-        width: 100%;
-    }
-
-    .setup, .planAlert{
-        border-radius: 0px;
-    }
-
-   
-}
-
-@media(max-width:539px){
-    .planAlert{
-        gap: 16px;
-        position: relative;
-    }
-
-    .planAlert svg{
-        position: absolute;
-        top: 30px;
-        right: 10px;
     }
 }
