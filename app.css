@@ -3,7 +3,9 @@
     padding: 0;
 }
 
-a{
+/* a:focus {outline: 3px solid #005BD3;} */
+
+a {
     text-decoration: none;
 }
 
@@ -33,9 +35,13 @@ label {
     border: 1px solid #616161;
     gap: 8px;
     align-items: center;
-    width: 480px;   
+    width: 480px;
 }
 
+label:focus-within{
+    border: 2px solid var(--White, #FFF);
+    background: var(--grey-g-200, #303030);
+}
 
 label input {
     background-color: transparent;
@@ -53,7 +59,7 @@ label input::placeholder {
 /* Tag(Notification/Store Name Styling */
 nav {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
 }
 
@@ -63,15 +69,16 @@ nav {
     padding: 8px;
     border-radius: 8px;
     position: relative;
+    border: none;
 }
 
 .notifyButton:hover {
     background-color: #616161;
 }
 
-/* .notifyButton:hover~.drop {
+.notifyButton:focus~.drop {
     display: block;
-} */
+}
 
 
 .drop {
@@ -86,7 +93,7 @@ nav {
     z-index: 10;
 }
 
-.dropOpen{
+.dropOpen {
     display: block;
 }
 
@@ -175,7 +182,7 @@ nav {
     z-index: 10;
 }
 
-.tabOpen{
+.tabOpen {
     display: block;
 }
 
@@ -312,7 +319,7 @@ main {
     flex-wrap: wrap;
 }
 
-.hideAlert{
+.hideAlert {
     display: none;
 }
 
@@ -336,9 +343,25 @@ main {
     border-radius: 6px;
     border: 1px solid rgba(0, 0, 0, 0.10);
     color: #323232;
+    box-shadow: 0px -1px 0px 0px #B5B5B5 inset;
 }
 
-.planAlert svg {
+.planAlert a:hover{
+    background: #f7f7f7;
+}
+
+.planAlert a:focus{
+    box-shadow: 0px 0px 0px 2px #005BD3, 0px 0px 0px 1px #FFF, 0px -1px 0px 0px #B5B5B5 inset;
+    outline: none;
+}
+
+/* .planAlert svg {
+    cursor: pointer;
+} */
+
+.planClose {
+    background: none;
+    border: none;
     cursor: pointer;
 }
 
@@ -411,7 +434,7 @@ main {
     gap: 96px;
 }
 
-.stepRight{
+.stepRight {
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -439,7 +462,7 @@ main {
     color: #005BD3;
 }
 
-.stepButton button{
+.stepButton button {
     padding: 6px 12px;
     border: none;
     background: transparent;
@@ -456,6 +479,15 @@ main {
     box-shadow: 0px 0px 0px 1.5px #333, 0px 1px 0px 1.5px #333, 0px 2px 0px 0px #000;
 }
 
+.greyBtn:hover {
+    background: #2A2A2A;
+}
+
+.greyBtn:focus {
+    box-shadow: 0px 0px 0px 5px #333, 0px 0px 0px 3px #FFF, 0px 0px 0px 1.5px #333;
+    outline: none;
+}
+
 @media(max-width:820px) {
     .container {
         width: 100%;
@@ -466,8 +498,8 @@ main {
         border-radius: 0px;
     }
 
-    label{
-      width: 350px;
+    label {
+        width: 350px;
     }
 
 }
@@ -484,7 +516,7 @@ main {
         right: 10px;
     }
 
-    .setupStep img{
+    .setupStep img {
         display: none;
     }
 }
