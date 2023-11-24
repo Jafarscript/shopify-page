@@ -2,7 +2,6 @@ function handleToggle(button, dropdown, items, openClass) {
   button.addEventListener("click", function () {
     let isExpanded = button.getAttribute("aria-expanded") === "true";
 
-    button.style.background = '#656266'
 
     dropdown.classList.toggle(openClass);
 
@@ -76,7 +75,58 @@ handleToggle(info, infoTab, infoItems, "tabOpen");
 
 // // Usage for the Setup element
 
-// let setupButton = document.querySelector(".setupButton");
-// let setup = document.querySelector(".storeTab");
-// const infoItems = infoTab.querySelectorAll('[role="menuitem"]');
-// handleToggle(info, infoTab, infoItems, "tabOpen");
+
+let setupButton = document.getElementById('setupButton');
+let setupStep = document.getElementById('setupStep');
+
+
+
+setupButton.addEventListener('click', function () {
+    let isShown = setupButton.getAttribute("aria-expanded") === "true";
+    
+    const stepItems = setupStep.querySelectorAll('[role="menuitem"]');
+
+    setupStep.classList.toggle('show');
+
+    if (isShown) {
+        setupButton.setAttribute("aria-expanded", "false");
+        setupButton.focus();
+      } else {
+        setupButton.setAttribute("aria-expanded", "true");
+        stepItems[0].focus();
+        // console.log(stepItems[0].focus())
+      }
+    // Toggle rotation class for the SVG inside setupButton
+    let arrowIcon = setupButton.querySelector('svg');
+    arrowIcon.classList.toggle('rotate180');
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && setupStep.classList.contains('show')) {
+          setupButton.setAttribute('aria-expanded', 'false');
+          setupButton.focus();
+          setupStep.classList.remove('show');
+        }
+
+        // Handle arrow key navigation
+        if (setupStep.classList.contains('show')) {
+            const stepItems = setupStep.querySelectorAll('[role="menuitem"]');
+            let focusedIndex = Array.from(stepItems).indexOf(document.activeElement);
+      
+            if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+              event.preventDefault(); // Prevent scrolling on ArrowDown
+              let nextIndex = (focusedIndex + 1) % stepItems.length;
+              stepItems[nextIndex].focus();
+            } else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+              event.preventDefault(); // Prevent scrolling on ArrowUp
+              let prevIndex = (focusedIndex - 1 + stepItems.length) % stepItems.length;
+              stepItems[prevIndex].focus();
+            }
+          }
+
+
+      });
+
+  
+});
+
+

@@ -364,6 +364,7 @@ nav {
 
 .account li a{
     outline: none;
+    color: #303030;
 }
 /* Drop Collections End */
 
@@ -505,14 +506,20 @@ main {
     flex-direction: column;
     gap: 14px;
     margin-top: 16px;
-    /* height: 0; */
+    height: 0;
     overflow: hidden;
+    transition: height 0.3s ease; 
+}
+
+.show{
+    height: auto;
     transition: height 0.3s ease; 
 }
 
 .setupButton{
     padding: 4px; 
     border-radius: 6px;
+    border: 2px solid transparent;
 }
 
 .setupButton:hover{
@@ -525,13 +532,48 @@ main {
     border-radius: 8px;
 }
 
+.setupButton svg{
+    transition: transform 0.3s ease;
+}
+
+.rotate180 {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease; /* Optional: Add a smooth transition effect */
+  }
+
 .setupStep li {
     display: flex;
     justify-content: space-between;
     padding: 8px 8px 12px 8px;
     border-radius: 10px;
-    background: #F3F3F3;
     gap: 96px;
+    height: 20px;
+    overflow: hidden;
+}
+
+
+
+.setupStep li img{
+    display: none;
+}
+
+.setupStep li:focus{
+    background: #F3F3F3;
+    height: auto;
+    outline: none;
+}
+
+.setupStep li:focus img{
+    display: block;
+}
+
+.setupStep li:focus-within{
+    background: #F3F3F3;
+    height: auto;
+}
+
+.setupStep li:focus ~ .setupStep li img{
+    display: block;
 }
 
 .stepRight {
@@ -619,6 +661,9 @@ main {
     }
 
     .setupStep img {
+        display: none;
+    }
+    .setupStep li:focus img{
         display: none;
     }
 }
