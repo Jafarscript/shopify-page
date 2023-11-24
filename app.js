@@ -1,48 +1,82 @@
-// alert('I am connected oooo')
-let bell = document.querySelector('.notifyButton');
-let bellDrop = document.querySelector('.drop')
+function handleToggle(button, dropdown, items, openClass) {
+  button.addEventListener("click", function () {
+    let isExpanded = button.getAttribute("aria-expanded") === "true";
 
-bell.addEventListener('click', function(){
-    bellDrop.classList.toggle('dropOpen')
-    if (bell.style.background = '#656266') {
-        bell.style.background = '#656266'; // Set it back to the original state
+    button.style.background = '#656266'
+
+    dropdown.classList.toggle(openClass);
+
+    if (isExpanded) {
+      button.setAttribute("aria-expanded", "false");
+      button.focus();
     } else {
-        bell.style.background = '#656266';
+      button.setAttribute("aria-expanded", "true");
+      items[0].focus();
     }
-    
-})
+  });
 
-let info = document.querySelector('.storename')
-let infoTab = document.querySelector('.storeTab')
+  // Add event listener for the Escape key
+  document.addEventListener("keydown", function (event) {
+    if (dropdown.classList.contains(openClass)) {
+      if (event.key === "Escape") {
+        button.setAttribute("aria-expanded", "false");
+        button.focus();
+        dropdown.classList.remove(openClass);
+      } else if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+        focusNextItem(items);
+      } else if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+        focusPreviousItem(items);
+      }
+    }
+  });
 
-info.addEventListener('click', function(){
-    infoTab.classList.toggle('tabOpen')
-})
+  // Close the menu when clicking outside of it
+  document.addEventListener("click", function (event) {
+    if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+      button.setAttribute("aria-expanded", "false");
+      dropdown.classList.remove(openClass);
+    }
+  });
 
-let close = document.querySelector('.close')
-let planAlert = document.querySelector('.planAlert')
+  function focusNextItem(items) {
+    const focusedItem = document.activeElement;
+    const index = Array.from(items).indexOf(focusedItem);
 
-close.addEventListener('click', function(){
-    planAlert.classList.toggle('hideAlert')
-    // alert(planAlert.classList)
-})
+    if (index < items.length - 1) {
+      items[index + 1].focus();
+    } else {
+      items[0].focus();
+    }
+  }
 
-let greyButtons = document.querySelectorAll('.greyBtn');
+  function focusPreviousItem(items) {
+    const focusedItem = document.activeElement;
+    const index = Array.from(items).indexOf(focusedItem);
 
-greyButtons.forEach(function(button) {
-    button.addEventListener('mousedown', function() {
-        button.style.background = '#2B2B2B';
-        button.style.boxShadow = '0px 0px 0px 1.5px #333, 0px 3px 0px 0px #000 inset';
-    });
+    if (index > 0) {
+      items[index - 1].focus();
+    } else {
+      items[items.length - 1].focus();
+    }
+  }
+}
 
-    document.addEventListener('mouseup', function() {
-        button.style.background = '';
-        button.style.boxShadow = ''; // Revert to the original state
-    });
-});
+// Usage for the bell element
+let bell = document.querySelector(".notifyButton");
+let bellDrop = document.querySelector(".drop");
+const bellItems = bellDrop.querySelectorAll('[role="menuitem"]');
+handleToggle(bell, bellDrop, bellItems, "dropOpen");
 
-let selectPlan = document.querySelector('.planAlert a');
+// Usage for the info element
+let info = document.querySelector(".storename");
+let infoTab = document.querySelector(".storeTab");
+const infoItems = infoTab.querySelectorAll('[role="menuitem"]');
+handleToggle(info, infoTab, infoItems, "tabOpen");
 
-selectPlan.addEventListener('click', function(){
-    selectPlan.style.boxShadow = '0px 2px 1.5px 0px #E2E2E2 inset';
-})
+
+// // Usage for the Setup element
+
+// let setupButton = document.querySelector(".setupButton");
+// let setup = document.querySelector(".storeTab");
+// const infoItems = infoTab.querySelectorAll('[role="menuitem"]');
+// handleToggle(info, infoTab, infoItems, "tabOpen");

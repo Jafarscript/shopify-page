@@ -7,6 +7,7 @@
 
 a {
     text-decoration: none;
+    color: #303030;
 }
 
 body {
@@ -59,7 +60,7 @@ label input::placeholder {
 /* Tag(Notification/Store Name Styling */
 nav {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 8px;
 }
 
@@ -76,9 +77,12 @@ nav {
     background-color: #616161;
 }
 
-.notifyButton:focus~.drop {
-    display: block;
+.notifyButton:focus{
+    background: #656266;
+    outline: none;
+    border: 2px solid #005BD3;
 }
+
 
 
 .drop {
@@ -96,6 +100,7 @@ nav {
 .dropOpen {
     display: block;
 }
+
 
 .alerthead {
     display: flex;
@@ -118,10 +123,27 @@ nav {
     text-align: center;
 }
 
+.alertMessage:focus{
+    border: 2px solid #005BD3;
+    border-radius: 6px;
+    outline: none;
+}
+
 .alertIcons {
     display: flex;
     align-items: center;
     gap: 16px;
+}
+
+.alertIcons button{
+    background: none;
+    border: none;
+}
+
+.alertIcons button:focus{
+    border: 2px solid #005BD3;
+    border-radius: 6px;
+    outline: none;
 }
 
 .alertIcons svg {
@@ -145,6 +167,7 @@ nav {
     background-color: #303030;
     cursor: pointer;
     position: relative;
+    border: none;
 }
 
 .storename h3 {
@@ -158,13 +181,20 @@ nav {
     background: #36FBA1;
     font-size: 12px;
     font-weight: 500;
-    padding: 9px 7px;
+    padding: 10px 7px;
     color: rgba(0, 0, 0, 0.40);
 }
 
 .storename:hover {
     background-color: #616161;
 }
+
+.storename:focus{
+    background: #656266;
+    outline: none;
+    border: 2px solid #005BD3;
+}
+
 
 
 
@@ -182,6 +212,11 @@ nav {
     z-index: 10;
 }
 
+/* .storename:focus + .storeTab,
+.storeTab:focus-within {
+    display: block;
+} */
+
 .tabOpen {
     display: block;
 }
@@ -197,6 +232,11 @@ nav {
     height: 0.75px;
     border: none;
 }
+
+
+/* .storename[aria-expanded='true'] + .storeTab[role ='menu']{
+    display: block;
+} */
 
 
 
@@ -228,6 +268,12 @@ nav {
     color: rgba(0, 0, 0, 0.40);
 }
 
+.collections:focus{
+    border: 2px solid #005BD3;
+    border-radius: 8px;
+    outline: none;
+}
+
 .collections div h3 {
     color: #303030;
     font-size: 13px;
@@ -239,6 +285,17 @@ nav {
     align-items: center;
     padding: 6px;
     gap: 8px;
+    margin-top: 4px;
+}
+
+.allStores:hover{
+    background: #f1f1f1;
+}
+
+.allStores:focus{
+    border: 2px solid #005BD3;
+    border-radius: 8px;
+    outline: none;
 }
 
 .allStores h3 {
@@ -254,12 +311,19 @@ nav {
     padding: 0px 6px;
 }
 
-.storeLink li {
+.storeLink li{
     padding: 6px;
     font-size: 13px;
     font-weight: 400;
 }
+.storeLink li:focus-within{
+    border: 2px solid #005BD3;
+    border-radius: 8px;
+}
 
+.storeLink li a:focus{
+    outline: none;
+}
 .storeLink li:hover {
     background: #f7f7f7;
 }
@@ -290,8 +354,17 @@ nav {
 .account li {
     font-size: 13px;
     font-weight: 400;
+    /* width: 100%; */
 }
 
+.account li:focus-within{
+    border: 2px solid #005BD3;
+    border-radius: 8px;
+}
+
+.account li a{
+    outline: none;
+}
 /* Drop Collections End */
 
 
@@ -372,6 +445,13 @@ main {
     border-radius: 18px;
 }
 
+.setupHead button{
+    border: none;
+    align-self: flex-start;
+    background: none;
+    cursor: pointer;
+}
+
 .setupHead {
     display: flex;
     justify-content: space-between;
@@ -417,12 +497,32 @@ main {
 
 
 
+
+
 .setupStep {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 14px;
     margin-top: 16px;
+    /* height: 0; */
+    overflow: hidden;
+    transition: height 0.3s ease; 
+}
+
+.setupButton{
+    padding: 4px; 
+    border-radius: 6px;
+}
+
+.setupButton:hover{
+    background-color: #f1f1f1;
+}
+
+.setupButton:focus{
+    border: 2px solid #005BD3;
+    outline: none;
+    border-radius: 8px;
 }
 
 .setupStep li {
@@ -468,6 +568,8 @@ main {
     background: transparent;
     cursor: pointer;
 }
+
+
 
 .stepButton .greyBtn {
     color: #F6F3F6;
