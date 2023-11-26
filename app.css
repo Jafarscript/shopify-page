@@ -474,27 +474,50 @@ main {
     font-weight: 400;
 }
 
-.countPart {
+.counter-container {
     margin-top: 16px;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.progressBar {
-    width: 72px;
-    height: 4px;
-    background-color: #E3E3E3;
-    border-radius: 8px;
-    overflow: hidden;
+.counter-container p{
+    color: #303030;
+    font-size: 12px;
+    font-weight: 400;
 }
 
-.progress {
+
+
+.counter-container span{
+    width: 72px;
+    appearance: none;
+    height: 4px;
+    background: #E3E3E3;
+    outline: none;
+    border-radius: 8px;
+    font-family: Inter;
+    position: relative;
+}
+
+#range{
+    width: 72px;
+    background: #E3E3E3;
+    height: 4px;
+    position: absolute;
+}
+
+
+#range{
+    fill: #1A1A1A;
+}
+
+/* .progress {
     display: block;
     width: 25%;
     background: #1A1A1A;
     height: 100%;
-}
+} */
 
 
 
@@ -557,13 +580,17 @@ main {
     display: none;
 }
 
-.setupStep li:focus{
+/* .setupStep li:focus{
     background: #F3F3F3;
     height: auto;
     outline: none;
-}
+} */
 
 .setupStep li:focus img{
+    display: block;
+}
+
+.setupStep li:focus-within img{
     display: block;
 }
 
@@ -580,6 +607,12 @@ main {
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+
+.stepRight button{
+    background: none;
+    outline: none;
+    border: none;
 }
 
 
@@ -609,6 +642,11 @@ main {
     border: none;
     background: transparent;
     cursor: pointer;
+}
+
+.setupButton:nth-child(2){
+    color: #323232;
+    margin-left: 16px;
 }
 
 

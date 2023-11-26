@@ -160,11 +160,11 @@
                             Use this personalized guide to get your store up and running.
                         </h5>
                         <section class="countPart">
-                            <div class="counter">
-                                <span class="count">1</span> / 5 completed
-                            </div>
-                            <div class="progressBar">
-                                <span class="progress"></span>
+                            <div id="counter-container" class="counter-container">
+                                <p id="count-label" class="count-label">0/5 completed</p>
+                                <span>
+                                    <input type="range" id="range" min="0" max="5" value="0" step="1" oninput="updateProgressBar()" >
+                                </span>
                             </div>
                         </section>
                     </div>
@@ -181,11 +181,13 @@
                     <li role="menuitem" tabindex="0">
                         <div class="stepRight">
                             <h3>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"
+                                <button class="boot" data-index="1" onclick="rotateSVG(1)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"
                                     fill="none">
                                     <circle cx="16" cy="16" r="12" stroke="#8A8A8A" stroke-width="2.5"
                                         stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
                                 </svg>
+                                </button>
                                 Customize your online store
                             </h3>
                             <p>
@@ -201,11 +203,13 @@
                     <li role="menuitem" tabindex="0">
                         <div class="stepRight">
                             <h3>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"
+                                <button class="boot" data-index="2" onclick="rotateSVG(2)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"
                                     fill="none">
                                     <circle cx="16" cy="16" r="12" stroke="#8A8A8A" stroke-width="2.5"
                                         stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
-                                </svg>Add your first product
+                                </svg>
+                                </button>Add your first product
                             </h3>
                             <p>
                                 Write a description, add photos, and set pricing for the
@@ -214,7 +218,7 @@
                             </p>
                             <div class="stepButton">
                                 <button class="greyBtn">Add product</button>
-                                <button>Import product</button>
+                                <button class="plain">Import product</button>
                             </div>
                         </div>
                         <img src="https://crushingit.tech/hackathon-assets/product.png" alt="" />
@@ -222,11 +226,13 @@
                     <li role="menuitem" tabindex="0">
                         <div class="stepRight">
                             <h3>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"
+                                <button class="boot" data-index="3" onclick="rotateSVG(3)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"
                                     fill="none">
                                     <circle cx="16" cy="16" r="12" stroke="#8A8A8A" stroke-width="2.5"
                                         stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
-                                </svg>Add a custom domain
+                                </svg>
+                                </button>Add a custom domain
                             </h3>
                             <p>
                                 Your current domain is 222219.myshopify.com but you can add a
@@ -242,11 +248,13 @@
                     <li role="menuitem" tabindex="0">
                         <div class="stepRight">
                             <h3>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"
+                                <button class="boot" data-index="4" onclick="rotateSVG(4)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"
                                     fill="none">
                                     <circle cx="16" cy="16" r="12" stroke="#8A8A8A" stroke-width="2.5"
                                         stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
-                                </svg>Name your store
+                                </svg>
+                                </button>Name your store
                             </h3>
                             <p>
                                 Your temporary store name is currently Davii collections. The
@@ -262,11 +270,13 @@
                     <li role="menuitem"tabindex="0">
                         <div class="stepRight">
                             <h3>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"
+                                <button class="boot" data-index="5" onclick="rotateSVG(5)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"
                                     fill="none">
                                     <circle cx="16" cy="16" r="12" stroke="#8A8A8A" stroke-width="2.5"
                                         stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
-                                </svg>Set up a payment provider
+                                </svg>
+                                </button>Set up a payment provider
                             </h3>
                             <p>
                                 Choose a payment provider to start accepting payments. You’ll
