@@ -10,6 +10,10 @@ function handleToggle(button, dropdown, items, openClass) {
       if(button !== setupButton){
         button.style.backgroud = '#656266'
       }
+
+      if(button === setupButton){
+        button.style.backgroud = '#F0F0F0';
+      }
   
       if (isExpanded) {
         closeDropdown();
@@ -127,10 +131,10 @@ function rotateSVG(index) {
   
 
   if (isRotated) {
-    boot.classList.remove('rotated');
+    // boot.classList.remove('rotated');
     resetToDefault(boot, index);
   } else {
-    boot.classList.add('rotated');
+    // boot.classList.add('rotated');
     playSequence(boot, index);
   }
 
@@ -172,13 +176,16 @@ document.addEventListener('DOMContentLoaded', function () {
   function updateProgressBar() {
     const rangeLabel = document.getElementById('count-label');
     const rangeInput = document.getElementById('range');
-
+    const rangeSpan = rangeInput.parentElement
+  
     completedSections = parseInt(rangeInput.value);
     rangeLabel.textContent = `${completedSections}/5 completed`;
-
+  
     const percentage = (completedSections / 5) * 100;
-    rangeInput.style.background = `linear-gradient(to right, rgb(0,0,0), rgb(0,0,0) ${percentage}%, #ffffff ${percentage}%, #ffffff 100%)`;
+    rangeInput.style.background = `linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0) ${percentage}%, #E3E3E3 ${percentage}%, #E3E3E3 100%)`;
+    
   }
+  
 
   function handleSectionClick() {
     const rangeInput = document.getElementById('range');
@@ -195,9 +202,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     updateProgressBar();
   }
+  // function changeSVG(){
+
+  // }
 
   const bootSections = document.querySelectorAll('.boot');
   bootSections.forEach(section => {
     section.addEventListener('click', handleSectionClick);
-  });
+  });    
 })

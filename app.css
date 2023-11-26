@@ -491,20 +491,24 @@ main {
 
 .counter-container span{
     width: 72px;
-    appearance: none;
     height: 4px;
     background: #E3E3E3;
     outline: none;
     border-radius: 8px;
     font-family: Inter;
     position: relative;
+    border-radius:8px ;
 }
 
+
 #range{
-    width: 72px;
-    background: #E3E3E3;
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
     height: 4px;
     position: absolute;
+    border-radius:8px ;
 }
 
 
@@ -512,12 +516,12 @@ main {
     fill: #1A1A1A;
 }
 
-/* .progress {
-    display: block;
-    width: 25%;
-    background: #1A1A1A;
-    height: 100%;
-} */
+input[type=range]::-webkit-slider-thumb{
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+
 
 
 
@@ -574,17 +578,31 @@ main {
     overflow: hidden;
 }
 
+.boot{
+    cursor: pointer;
+}
+
+
+
+.boot svg circle{
+    transition: stroke-dasharray 0.3s ease;
+}
+
+.boot:hover svg circle{
+    stroke-dasharray: initial;
+}
+
 
 
 .setupStep li img{
     display: none;
 }
 
-/* .setupStep li:focus{
+.setupStep li:focus{
     background: #F3F3F3;
     height: auto;
     outline: none;
-} */
+}
 
 .setupStep li:focus img{
     display: block;
@@ -622,8 +640,18 @@ main {
     display: flex;
     align-items: center;
     gap: 8px;
+    position: relative;
     color: #303030;
 }
+
+.boot{
+    position: absolute;
+}
+
+.setupStep li h3 span{
+    margin-left: 40px;
+}
+
 
 .setupStep li p {
     font-size: 13px;
@@ -644,9 +672,31 @@ main {
     cursor: pointer;
 }
 
-.setupButton:nth-child(2){
+.stepButton .greyBtn:focus{
+    box-shadow: 0px 0px 0px 1px #333, 0px 0px 0px 2px  #FFF, 0px 0px 0px 4px  #005BD3;
+}
+
+.setupButton{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.plain{
     color: #323232;
-    margin-left: 16px;
+    /* margin-left: 16px; */
+}
+
+.plain:focus{
+    border: 2px solid #005BD3;
+    border-radius: 6px;
+}
+
+.boot:focus{
+    border: 2px solid #005BD3;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
 }
 
 
@@ -660,6 +710,10 @@ main {
     border-left: 1.5px solid rgba(255, 255, 255, 0.20);
     box-shadow: 0px 0px 0px 1.5px #333, 0px 1px 0px 1.5px #333, 0px 2px 0px 0px #000;
 }
+
+/* .rotated{
+    transform: rotate(180deg);
+} */
 
 .greyBtn:hover {
     background: #2A2A2A;
@@ -704,6 +758,9 @@ main {
     .setupStep li:focus img{
         display: none;
     }
+    .setupStep li:focus-within img{
+        display: none;
+    }
 }
 
 @media(max-width: 750px) {
@@ -739,5 +796,20 @@ main {
         padding: 6px;
         background: none;
         /* border-radius: 0px; */
+    }
+}
+
+@media(max-width: 325px){
+    header{
+        padding: 10px 0px;
+        gap: 0px;
+    }
+
+    label{
+        width: 100px;
+    }
+
+    .storeTab{
+      width: 200px;
     }
 }
