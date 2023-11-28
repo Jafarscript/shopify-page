@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -87,7 +88,7 @@ nav {
 
 .drop {
     position: absolute;
-    display: none;
+    visibility: hidden;
     top: 75px;
     background: #fff;
     padding: 16px;
@@ -95,10 +96,13 @@ nav {
     border-radius: 14px;
     border: 1px solid #dbdbdb;
     z-index: 10;
+    opacity: 0;
+    transition: visibility 0.2s, opacity 0.3s ease;
 }
 
 .dropOpen {
-    display: block;
+    visibility: visible;
+    opacity: 1;
 }
 
 
@@ -204,12 +208,15 @@ nav {
     top: 75px;
     background-color: #fff;
     right: 15px;
-    display: none;
+    /* display: none; */
+    visibility: hidden;
     padding: 6px 0px;
     width: 320px;
     border-radius: 14px;
     border: 1px solid #dbdbdb;
     z-index: 10;
+    opacity: 0;
+    transition: visibility 0.2s, opacity 0.3s ease;
 }
 
 /* .storename:focus + .storeTab,
@@ -217,8 +224,9 @@ nav {
     display: block;
 } */
 
-.tabOpen {
-    display: block;
+.storeTab.tabOpen {
+    visibility: visible;
+    opacity: 1;
 }
 
 .storeTab section {
@@ -226,6 +234,7 @@ nav {
     flex-direction: column;
     gap: 4px;
 }
+
 
 .storeTab section hr {
     background: #E1E1E1;
@@ -357,14 +366,17 @@ nav {
     /* width: 100%; */
 }
 
-.account li:focus-within{
-    border: 2px solid #005BD3;
-    border-radius: 8px;
-}
+
 
 .account li a{
     outline: none;
     color: #303030;
+}
+
+.account li:focus-within{
+    border: 2px solid #005BD3;
+    border-radius: 8px;
+    outline: none;
 }
 /* Drop Collections End */
 
@@ -497,7 +509,6 @@ main {
     border-radius: 8px;
     font-family: Inter;
     position: relative;
-    border-radius:8px ;
 }
 
 
@@ -533,14 +544,14 @@ input[type=range]::-webkit-slider-thumb{
     flex-direction: column;
     gap: 14px;
     margin-top: 16px;
-    height: 0;
+    max-height: 0;
     overflow: hidden;
-    transition: height 0.3s ease; 
+    transition: max-height 0.3s ease; 
 }
 
-.show{
+.setupStep.show{
+    max-height: 1000px;
     height: auto;
-    transition: height 0.3s ease; 
 }
 
 .setupButton{
@@ -574,8 +585,9 @@ input[type=range]::-webkit-slider-thumb{
     padding: 8px 8px 12px 8px;
     border-radius: 10px;
     gap: 96px;
-    height: 20px;
+    max-height: 20px;
     overflow: hidden;
+    transition: max-height 0.3s ease;
 }
 
 .boot{
@@ -600,6 +612,7 @@ input[type=range]::-webkit-slider-thumb{
 
 .setupStep li:focus{
     background: #F3F3F3;
+    max-height: 500px;
     height: auto;
     outline: none;
 }
@@ -614,6 +627,7 @@ input[type=range]::-webkit-slider-thumb{
 
 .setupStep li:focus-within{
     background: #F3F3F3;
+    max-height: 500px;
     height: auto;
 }
 
